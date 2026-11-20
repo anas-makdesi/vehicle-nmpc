@@ -7,6 +7,10 @@ stacks. On a slippery road it plans with a friction value that is **certified fr
 data** by [ddma](https://github.com/anas-makdesi/ddma), so it never asks the tyres for
 grip the road cannot give.
 
+![Two NMPCs on a road with friction 0.6: the one assuming friction 1.0 spins, the one with the certified friction finishes the lap](docs/figures/demo.gif)
+
+*Road friction 0.6: planning with the nominal friction 1.0, the car spins after 344 m; planning with the friction certified by ddma (0.57), it finishes the lap in 72.6 s ([script](examples/demo_gif.py)).*
+
 | | |
 |---|---|
 | **≈ 1.2 ms** | median solve time per control step (acados, real-time iteration, 40 shooting intervals, 50 Hz); worst case over a lap ≈ 7 ms, no missed deadline |
