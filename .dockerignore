@@ -1,0 +1,5 @@
+build
+.acados
+acados
+ros2/vehicle_nmpc_ros/generated
+.git

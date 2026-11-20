@@ -1,0 +1,107 @@
+{
+  "rti_N20": {
+    "steps": 2872,
+    "median_ms": 0.648,
+    "p99_ms": 1.03,
+    "max_ms": 8.807,
+    "over_20ms_pct": 0.0,
+    "over_10ms_pct": 0.0,
+    "N": 20,
+    "horizon_s": 2.0,
+    "rate_hz": 50,
+    "lap_time": 57.44,
+    "max_offset_m": 0.24
+  },
+  "rti_N40": {
+    "steps": 2872,
+    "median_ms": 1.217,
+    "p99_ms": 2.226,
+    "max_ms": 7.323,
+    "over_20ms_pct": 0.0,
+    "over_10ms_pct": 0.0,
+    "N": 40,
+    "horizon_s": 2.0,
+    "rate_hz": 50,
+    "lap_time": 57.44,
+    "max_offset_m": 0.23,
+    "python_step_median_ms": 1.29
+  },
+  "rti_N80": {
+    "steps": 2873,
+    "median_ms": 2.162,
+    "p99_ms": 6.122,
+    "max_ms": 8.127,
+    "over_20ms_pct": 0.0,
+    "over_10ms_pct": 0.0,
+    "N": 80,
+    "horizon_s": 2.0,
+    "rate_hz": 50,
+    "lap_time": 57.44,
+    "max_offset_m": 0.23
+  },
+  "rti_N50_100Hz": {
+    "steps": 5744,
+    "median_ms": 1.412,
+    "p99_ms": 2.472,
+    "max_ms": 5.937,
+    "over_20ms_pct": 0.0,
+    "over_10ms_pct": 0.0,
+    "N": 50,
+    "horizon_s": 2.0,
+    "rate_hz": 100,
+    "lap_time": 57.43,
+    "max_offset_m": 0.23
+  },
+  "sqp_N40": {
+    "steps": 2872,
+    "median_ms": 5.999,
+    "p99_ms": 181.84,
+    "max_ms": 277.093,
+    "over_20ms_pct": 8.88,
+    "over_10ms_pct": 15.67,
+    "iterations_median": 4,
+    "iterations_max": 100,
+    "lap_time": 57.43,
+    "max_offset_m": 0.24
+  },
+  "ltv_osqp": {
+    "steps": 3155,
+    "median_ms": 1.072,
+    "p99_ms": 5.106,
+    "max_ms": 6.61,
+    "over_20ms_pct": 0.0,
+    "over_10ms_pct": 0.0,
+    "python_step_median_ms": 7.229,
+    "lap_time": 63.1,
+    "max_offset_m": 0.33,
+    "note": "speed profile at 65% of grip"
+  },
+  "sqp_cold": {
+    "steps": 45,
+    "median_ms": 11.756,
+    "p99_ms": 20.532,
+    "max_ms": 21.734,
+    "over_20ms_pct": 2.22,
+    "over_10ms_pct": 64.44,
+    "iterations_median": 8
+  },
+  "sqp_warm": {
+    "steps": 42,
+    "median_ms": 7.885,
+    "p99_ms": 15.161,
+    "max_ms": 15.821,
+    "over_20ms_pct": 0.0,
+    "over_10ms_pct": 23.81,
+    "iterations_median": 5
+  },
+  "ipopt_warm": {
+    "steps": 42,
+    "median_ms": 126.233,
+    "p99_ms": 209.981,
+    "max_ms": 227.182,
+    "over_20ms_pct": 100.0,
+    "over_10ms_pct": 100.0,
+    "iterations_median": 17,
+    "max_first_input_diff_vs_acados": 2.6e-06
+  }
+}

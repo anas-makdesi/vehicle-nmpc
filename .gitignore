@@ -1,0 +1,11 @@
+__pycache__/
+*.egg-info/
+build/
+.acados/
+acados/
+c_generated_code/
+acados_ocp.json
+ros2/vehicle_nmpc_ros/generated/
+.pytest_cache/
+.ruff_cache/
+*.pyc

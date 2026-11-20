@@ -1,0 +1,63 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-24.04
+    env:
+      ACADOS_SOURCE_DIR: ${{ github.workspace }}/.acados
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/cache@v4
+        with:
+          path: .acados
+          key: acados-${{ runner.os }}-${{ hashFiles('scripts/install_acados.sh') }}
+      - name: Build acados
+        run: scripts/install_acados.sh .acados
+      - name: Install package
+        run: |
+          # ddma (public, pinned in pyproject.toml) so the grip certificate tests run
+          pip install -e ".[dev,grip]"
+      - name: Check that the certificate tests will run
+        run: python -c "import ddma; print('ddma', ddma.__version__)"
+      - name: Lint
+        run: ruff check .
+      - name: Tests
+        run: |
+          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ACADOS_SOURCE_DIR/lib
+          pytest -q -rs
+
+  ros2:
+    runs-on: ubuntu-24.04
+    container: ros:jazzy-ros-base
+    env:
+      ACADOS_SOURCE_DIR: /opt/acados
+    defaults:
+      run: { shell: bash }
+    steps:
+      - uses: actions/checkout@v4
+      - name: System packages
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3-venv cmake git ros-jazzy-ackermann-msgs \
+            ros-jazzy-launch-testing-ament-cmake ros-jazzy-ament-cmake-gtest > /dev/null
+      - name: Python venv for code generation (keeps the ROS Python untouched)
+        run: |
+          python3 -m venv /opt/venv
+          /opt/venv/bin/pip install -q --upgrade pip
+          /opt/venv/bin/pip install -q numpy scipy casadi osqp matplotlib
+      - name: Build acados
+        run: PYTHON=/opt/venv/bin/python scripts/install_acados.sh /opt/acados
+      - name: Generate the solver C code
+        run: LD_LIBRARY_PATH=$ACADOS_SOURCE_DIR/lib /opt/venv/bin/python scripts/export_c_code.py
+      - name: colcon build and test
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          mkdir -p /ws && ln -s "$GITHUB_WORKSPACE/ros2" /ws/src && cd /ws
+          colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+          colcon test --event-handlers console_direct+
+          colcon test-result --verbose

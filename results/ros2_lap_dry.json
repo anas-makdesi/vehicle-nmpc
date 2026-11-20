@@ -1,0 +1,15 @@
+{
+  "finished": true,
+  "lap_time_s": 56.95,
+  "distance_m": 1321.5,
+  "max_offset_m": 0.232,
+  "steps": 2847,
+  "failed_solves": 0,
+  "solve_ms_median": 1.293,
+  "solve_ms_p99": 2.262,
+  "solve_ms_max": 5.369,
+  "step_ms_median": 1.385,
+  "latency_ms_median": 1.557,
+  "latency_ms_p99": 2.784,
+  "latency_ms_max": 5.675
+}

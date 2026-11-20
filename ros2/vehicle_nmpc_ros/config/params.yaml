@@ -1,0 +1,10 @@
+# Example parameters (ros2 run ... --ros-args --params-file params.yaml)
+vehicle_sim:
+  ros__parameters:
+    mu: 1.0             # true road friction
+    state_rate_hz: 50.0
+    v0: 15.0
+nmpc:
+  ros__parameters:
+    mu_model: 1.0       # friction of the planning model
+    mu_limit: 1.0       # friction used by the constraints

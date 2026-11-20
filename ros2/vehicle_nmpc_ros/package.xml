@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>vehicle_nmpc_ros</name>
+  <version>0.1.0</version>
+  <description>Real-time NMPC (acados, generated C code) and a vehicle simulator as ROS 2 C++ nodes.</description>
+  <maintainer email="111075600+anas-makdesi@users.noreply.github.com">Anas Makdesi</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>ackermann_msgs</depend>
+  <depend>vehicle_nmpc_msgs</depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>rclpy</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
